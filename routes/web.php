@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ConfigController;
 
+use App\Http\Controllers\Admin\CategoryCourseController;
+
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -136,6 +138,15 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('order-history', [OrderController::class, 'orderhistory']);
     Route::get('pdf-order', 'Admin\OrderController@pdf');
     Route::get('pdf-showorder', 'Admin\OrderController@pdfshow');
+
+    //Admin Course Category
+    Route::get('course-categories',[CategoryCourseController::class, 'index']);
+    Route::get('show-course-category/{id}',[CategoryCourseController::class, 'show']);
+    Route::get('add-course-category', 'Admin\CategoryCourseController@add');
+    Route::post('insert-course-category','Admin\CategoryCourseController@insert');
+    Route::get('edit-course-category/{id}',[CategoryCourseController::class,'edit']);
+    Route::put('update-course-category/{id}', [CategoryCourseController::class, 'update']);
+    Route::get('delete-course-category/{id}', [CategoryCourseController::class, 'destroy']);
 
     //config
     Route::get('config', [ConfigController::class, 'index']);

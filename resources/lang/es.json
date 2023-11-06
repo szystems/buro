@@ -370,7 +370,10 @@
     "No such course category found": "No se encontró tal categoría de curso",
     "Course Category Added Successfully": "Categoría de curso agregada correctamente",
     "Course Category Updated Successfully": "Categoría de curso actualizada correctamente",
-    "Course Category Deleted Successfully": "Categoría de curso eliminada correctamente"
+    "Course Category Deleted Successfully": "Categoría de curso eliminada correctamente",
+    "Hide/Show": "Esconder/Mostrar",
+    "Hiding": "Escondiendo",
+    "No Poupular": "No Popular"
 
 
 }

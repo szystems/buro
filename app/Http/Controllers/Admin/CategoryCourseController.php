@@ -19,6 +19,7 @@ class CategoryCourseController extends Controller
             $queryCategory=$request->input('fcategory');
             $categories=DB::table('category_courses')
             ->where('name','LIKE','%'.$queryCategory.'%')
+            ->where('status',1)
             ->orderBy('name','asc')
             ->paginate(25);
             $filterCategories = CategoryCourse::all();
@@ -35,7 +36,7 @@ class CategoryCourseController extends Controller
 
     public function add()
     {
-        return view('admin.category.add');
+        return view('admin.category_course.add');
     }
 
     public function insert(CategoryCourseFormRequest $request)
@@ -71,21 +72,21 @@ class CategoryCourseController extends Controller
         $category->status = 1;
         $category->save();
 
-        return redirect('/category_courses')->with('status', __('Course Category Added Successfully'));
+        return redirect('course-categories')->with('status', __('Course Category Added Successfully'));
     }
 
     public function edit($id)
     {
-        $category = Category::find($id);
-        return view('admin.category.edit', \compact('category'));
+        $category = CategoryCourse::find($id);
+        return view('admin.category_course.edit', \compact('category'));
     }
 
-    public function update(CategoriaFormRequest $request, $id)
+    public function update(CategoryCourseFormRequest $request, $id)
     {
-        $category = Category::find($id);
+        $category = CategoryCourse::find($id);
         if($request->hasFile('image'))
         {
-            $path = 'assets/uploads/category/'.$category->image;
+            $path = 'assets/uploads/category_courses/'.$category->image;
             if(File::exists($path))
             {
                 File::delete($path);
@@ -93,7 +94,7 @@ class CategoryCourseController extends Controller
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
             $filename = time().'.'.$ext;
-            $file->move('assets/uploads/category',$filename);
+            $file->move('assets/uploads/category_courses',$filename);
             $category->image = $filename;
         }
 
@@ -105,7 +106,7 @@ class CategoryCourseController extends Controller
             $slug = $slug."-".ucwords($palabras[$i]);
             error_log("slug: ".$slug);
         }
-        if(Category::where('slug',$slug)->exists())
+        if(CategoryCourse::where('slug',$slug)->exists())
         {
             $slug = $slug.$category->id;
         }
@@ -113,26 +114,18 @@ class CategoryCourseController extends Controller
         $category->name = $request->input('name');
         $category->slug = $slug;
         $category->description = $request->input('description');
-        $category->status = $request->input('status') == TRUE ? '1':'0';
+        $category->show = $request->input('show') == TRUE ? '1':'0';
         $category->popular = $request->input('popular') == TRUE ? '1':'0';
         $category->update();
 
-        return redirect('/categories')->with('status',__('Category Updated Successfully'));
+        return redirect('course-categories')->with('status',__('Course Category Updated Successfully'));
     }
 
     public function destroy($id)
     {
-        $category = Category::find($id);
-        if ($category->image)
-        {
-            $path = 'assets/uploads/category/'.$category->image;
-            if (File::exists($path))
-            {
-                File::delete($path);
-
-            }
-        }
-        $category->delete();
-        return redirect('/categories')->with('status',__('Category Deleted Successfully'));
+        $category = CategoryCourse::find($id);
+        $category->status = 0;
+        $category->update();
+        return redirect('course-categories')->with('status',__('Course Category Deleted Successfully'));
     }
 }
