@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Pure css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+
+
+    <title>{{  __('Product List') }}</title>
+
+</head>
+
+<body>
+    <center>
+        <img align="center" src="{{ $imagen }}" alt="" height="100">
+    </center>
+    <h3 align="center"><u>{{ __('Product List') }}</u></h3>
+    <label>
+        <font size="1">{{ __('Report Date') }}</font>
+        <font color="blue" size="1">
+            @php
+                $horafecha = new DateTime("now", new DateTimeZone(Auth::user()->timezone));
+                $horafecha = $horafecha->format('d-m-Y, H:i:s')
+            @endphp
+            {{ $horafecha }} ({{ Auth::user()->timezone }})
+        </font>
+    </label>
+    <br>
+    <label for="">
+        <font size="1"><strong><u>{{ __('Filter by') }}:</u></strong></font>
+    </label>
+    <br>
+    <label for="">
+        <font size="1">{{ __('Product') }}: </font>
+        <font size="1" color="blue">
+            @if ($queryProduct != null) {{ $queryProduct }} @if ($queryProduct != null)
+                @endif
+            @else
+            {{ __('All') }} @endif
+        </font>
+    </label>
+    <label for="">
+        <font size="1">{{ __('Category') }}: </font>
+        <font size="1" color="blue">
+            @if ($queryCategory != null) {{ $queryCategory }} @if ($queryCategory != null)
+                @endif
+            @else
+            {{ __('All') }} @endif
+        </font>
+    </label>
+    <label for="">
+        <font size="1">Stock: </font>
+        <font size="1" color="blue">
+            @if ($queryStock == ">=")
+                {{ __('All') }}
+            @elseif ($queryStock == "<=")
+                {{ __('Out of Stock') }}
+            @elseif ($queryStock == ">")
+                {{ __('With Stock') }}
+            @endif
+        </font>
+    </label>
+    <label for="">
+        <font size="1">{{ __('State') }}: </font>
+        <font size="1" color="blue">
+            @if ($queryStatus != null)
+                @if ($queryStatus == 0)
+                {{ __('Disabled') }}
+                @elseif ($queryStatus == 1)
+                {{ __('Enabled') }}
+                @endif
+            @else
+            {{ __('All') }}
+            @endif
+        </font>
+    </label>
+    <label for="">
+        <font size="1">{{ __('Trending') }}: </font>
+        <font size="1" color="blue">
+            @if ($queryTrending != null)
+                {{ $queryTrending == '0' ? 'Disabled' : 'Enabled' }}
+            @else
+            {{ __('All') }}
+            @endif
+        </font>
+    </label>
+    <label for="">
+        <font size="1">{{ __('Discount') }}: </font>
+        <font size="1" color="blue">
+            @if ($queryDiscount != null)
+                {{ $queryDiscount == '0' ? 'Disabled' : 'Enabled' }}
+            @else
+            {{ __('All') }}
+            @endif
+        </font>
+    </label>
+
+    <table class="pure-table pure-table-bordered" Width=100%>
+        <thead>
+            <tr>
+                <th>
+                    <font size="1">{{ __('Category') }}</font>
+                </th>
+                <th>
+                    <font size="1">{{ __('Name') }}</font>
+                </th>
+                <th>
+                    <font size="1">{{ __('Price') }}</font>
+                </th>
+                <th>
+                    <font size="1">Stock</font>
+                </th>
+                <th>
+                    <font size="1">{{ __('Image') }}</font>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($products as $item)
+                <tr>
+                    <td align="center">
+                        <font size="1">{{ $item->Category }}
+                    </td>
+                    <td>
+                        <font size="1">{{ $item->name }}</font>
+                    </td>
+                    @if ($item->discount == 1)
+                        <td align="right">
+                            <font size="1" color="blue">
+                                {{ $currency }}{{ number_format($item->selling_price, 2, '.', ',') }}</font>
+                            <br>
+                            <strike>
+                                <font size="1" color="red">
+                                    {{ $currency }}{{ number_format($item->original_price, 2, '.', ',') }}</font>
+                            </strike>
+                        </td>
+                    @else
+                        <td align="right">
+                            <font size="1" color="blue">
+                                {{ $currency }}{{ number_format($item->original_price, 2, '.', ',') }}</font>
+                        </td>
+                    @endif
+                    <td align="center">
+                        <font size="1">{{ $item->qty }}</font>
+                    </td>
+                    <td align="center">
+                        @if ($item->image != null)
+                            <img align="center" src="{{ $path . '/product/' . $item->image }}" alt=""
+                                height="50">
+                        @endif
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</body>
+
+</html>

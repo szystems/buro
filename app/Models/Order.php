@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\OrderItem;
+
+class Order extends Model
+{
+    use HasFactory;
+
+    protected $table= 'orders';
+    protected $fillable = [
+        'user_id',
+        'fname',
+        'lname',
+        'email',
+        'phone',
+        'address1',
+        'address2',
+        'city',
+        'state',
+        'country',
+        'zipcode',
+        'total_tax',
+        'total_price',
+        'payment_mode',
+        'payment_id',
+        'note',
+        'total_price',
+        'status',
+        'tracking_no',
+        'created_at',
+        'updated_at'
+    ];
+
+    public function orderitems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+}
