@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ConfigController;
 
 use App\Http\Controllers\Admin\CategoryCourseController;
+use App\Http\Controllers\Admin\CourseController;
 
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\CartController;
@@ -147,6 +148,15 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('edit-course-category/{id}',[CategoryCourseController::class,'edit']);
     Route::put('update-course-category/{id}', [CategoryCourseController::class, 'update']);
     Route::get('delete-course-category/{id}', [CategoryCourseController::class, 'destroy']);
+
+    //Admin Course
+    Route::get('index-courses',[CourseController::class, 'index']);
+    Route::get('show-course/{id}',[CourseController::class, 'show']);
+    Route::get('add-course', 'Admin\CourseController@add');
+    Route::post('insert-course','Admin\CourseController@insert');
+    Route::get('edit-course/{id}',[CourseController::class,'edit']);
+    Route::put('update-course/{id}', [CourseController::class, 'update']);
+    Route::get('delete-course/{id}', [CourseController::class, 'destroy']);
 
     //config
     Route::get('config', [ConfigController::class, 'index']);

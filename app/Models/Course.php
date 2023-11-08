@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BlongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Course extends Model
@@ -29,7 +28,7 @@ class Course extends Model
         'status',
     ];
 
-    public function category_courses(): BelongsTo
+    public function category_courses()
     {
         return $this->belongsTo(CategoryCourse::class, 'category_course_id', 'id');
     }

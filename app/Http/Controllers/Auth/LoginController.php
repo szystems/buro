@@ -32,7 +32,7 @@ class LoginController extends Controller
     {
         if(Auth::user()->role_as == '1') //1 = Admin Login
         {
-            return redirect('dashboard')->with('status',__('Welcome to your Bocacosta Coffee E-Shop dashboard'));
+            return redirect('dashboard')->with('status',__('Welcome to your dashboard'));
         }
         elseif(Auth::user()->role_as == '0') // Normal or Default User Login
         {

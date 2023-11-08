@@ -71,6 +71,7 @@
     "Cancelled": "Cancelado",
     "Edit": "Editar",
     "Change Image": "Cambiar Imagen",
+    "Change PDF": "Cambiar pdf",
     "Search": "Buscar",
     "All": "Todos",
     "Show": "Ver",
@@ -360,7 +361,6 @@
     "Our Office": "Ubicación",
     "Email Us": "Escríbenos",
     "Call Us": "Llámanos",
-    "Courses": "Cursos",
     "Instructors": "Instructores",
     "Subscribe": "Suscribirse",
     "Course Categories": "Categorias de Cursos",
@@ -373,7 +373,20 @@
     "Course Category Deleted Successfully": "Categoría de curso eliminada correctamente",
     "Hide/Show": "Esconder/Mostrar",
     "Hiding": "Escondiendo",
-    "No Poupular": "No Popular"
+    "No Poupular": "No Popular",
+    "Courses": "Cursos",
+    "Course": "Curso",
+    "Course Added Successfully": "Curso agregado correctamente",
+    "Course Updated Successfully": "Curso editado correctamente",
+    "Course Deleted Successfully": "Curso eliminado correctamente",
+    "Add Course": "Añadir Curso",
+    "Edit Course": "Editar Curso",
+    "Course Profile": "Perfil de Curso",
+    "Are you sure to remove this course?": "¿Está seguro de eliminar esta curso?",
+    "No courses added or found!": "No se han añadido o encontrado cursos!",
+    "Show PDF": "Ver PDF",
+    "Download": "Descargar",
+    "Close": "Cerrar"
 
 
 }

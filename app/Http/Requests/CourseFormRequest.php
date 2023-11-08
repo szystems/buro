@@ -27,7 +27,7 @@ class CourseFormRequest extends FormRequest
             'name'=>'required',
             'description'=>'nullable',
             'image'=>'mimes:jpg,jpeg,bmp,png|max:3000',
-            'file_pdf'=>'mimetypes:application/pdf|max:3000',
+            'file_pdf'=>'mimetypes:application/pdf|max:10000',
         ];
     }
 }

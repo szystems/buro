@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\CategoryCourse;
 use App\Http\Requests\CategoryCourseFormRequest;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 use DB;
 
 class CategoryCourseController extends Controller

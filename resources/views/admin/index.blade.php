@@ -100,6 +100,22 @@
                             </div>
                             <div class="col-md-2 col-6">
                                 <div class="card">
+                                    <a href="{{ url('index-courses') }}">
+                                        <div class="card-header mx-4 p-3 text-center">
+                                            <div
+                                                class="icon icon-shape icon-lg bg-gradient-info shadow text-center border-radius-lg">
+                                                <i class="material-icons opacity-10">local_library</i>
+                                            </div>
+                                        </div>
+                                        <div class="card-body pt-0 p-3 text-center">
+                                            <hr class="horizontal dark my-3">
+                                            <h5 class="mb-0">{{ __('Courses') }}</h5>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-6">
+                                <div class="card">
                                     <a href="{{ url('users') }}">
                                         <div class="card-header mx-4 p-3 text-center">
                                             <div
