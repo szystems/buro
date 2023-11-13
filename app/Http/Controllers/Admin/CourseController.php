@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 
 use App\Models\CategoryCourse;
 use App\Models\Course;
+use App\Models\Video;
+use App\Models\Audio;
 use App\Http\Requests\CourseFormRequest;
+use App\Http\Requests\VideoFormRequest;
+use App\Http\Requests\AudioFormRequest;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use DB;
@@ -34,7 +38,9 @@ class CourseController extends Controller
     public function show($id)
     {
         $course = Course::find($id);
-        return view('admin.course.show', compact('course'));
+        $videos = Video::all();
+        $audios = Audio::all();
+        return view('admin.course.show', compact('course','videos','audios'));
     }
 
     public function add()
@@ -157,5 +163,25 @@ class CourseController extends Controller
         $course->status = 0;
         $course->update();
         return redirect('index-courses')->with('status',__('Course Deleted Successfully'));
+    }
+
+    public function insertvideo(VideoFormRequest $request)
+    {
+        $video = new Video();
+        if($request->hasFile('file_video'))
+        {
+            $file = $request->file('file_video');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/videos',$filename);
+            $video->file_video = $filename;
+        }
+
+        $video->course_id = $request->input('course_id');
+        $video->name = $request->input('name');
+        $video->description = $request->input('description');
+        $video->save();
+
+        return redirect('show-course/'.$request->input('course_id'))->with('status', __('Video Added Successfully'));
     }
 }

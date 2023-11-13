@@ -158,6 +158,18 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::put('update-course/{id}', [CourseController::class, 'update']);
     Route::get('delete-course/{id}', [CourseController::class, 'destroy']);
 
+    //Admin Video
+    Route::post('insert-video','Admin\CourseController@insertvideo');
+    Route::get('edit-video/{id}',[CourseController::class,'editvideo']);
+    Route::put('update-video/{id}', [CourseController::class, 'updatevideo']);
+    Route::get('delete-video/{id}', [CourseController::class, 'destroyvideo']);
+
+    //Admin Audio
+    Route::post('insert-audio','Admin\CourseController@insertaudio');
+    Route::get('edit-audio/{id}',[CourseController::class,'editaudio']);
+    Route::put('update-audio/{id}', [CourseController::class, 'updateaudio']);
+    Route::get('delete-audio/{id}', [CourseController::class, 'destroyaudio']);
+
     //config
     Route::get('config', [ConfigController::class, 'index']);
     Route::put('update-config', [ConfigController::class, 'update']);

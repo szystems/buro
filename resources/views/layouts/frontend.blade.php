@@ -110,14 +110,14 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav py-0">
-                            @php
+                            {{-- @php
                                 $categories=DB::table('categories')
                                 ->where('status','=','1')
                                 ->orderBy('name','asc')
                                 ->get();
 
                                 $config=DB::table('configs')->first();
-                            @endphp
+                            @endphp --}}
                             <a href="{{ url('/') }}" class="nav-item nav-link active">{{ __('Home') }}</a>
                             <a href="about.html" class="nav-item nav-link">{{ __('About') }}</a>
                             <a href="course.html" class="nav-item nav-link">{{ __('Courses') }}</a>

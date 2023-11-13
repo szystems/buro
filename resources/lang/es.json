@@ -386,7 +386,31 @@
     "No courses added or found!": "No se han añadido o encontrado cursos!",
     "Show PDF": "Ver PDF",
     "Download": "Descargar",
-    "Close": "Cerrar"
+    "Close": "Cerrar",
+    "Videos": "Videos",
+    "Video": "Video",
+    "Video Added Successfully": "Video agregado correctamente",
+    "Video Updated Successfully": "Video editado correctamente",
+    "Video Deleted Successfully": "Video eliminado correctamente",
+    "Add Video": "Añadir Video",
+    "Edit Video": "Editar Video",
+    "Video Profile": "Perfil de Video",
+    "Are you sure to remove this video?": "¿Está seguro de eliminar esta video?",
+    "No videos added or found!": "No se han añadido o encontrado videos!",
+    "Audios": "Audios",
+    "Audio": "Audio",
+    "Audio Added Successfully": "Audio agregado correctamente",
+    "Audio Updated Successfully": "Audio editado correctamente",
+    "Audio Deleted Successfully": "Audio eliminado correctamente",
+    "Add Audio": "Añadir Audio",
+    "Edit Audio": "Editar Audio",
+    "Audio Profile": "Perfil de Audio",
+    "Are you sure to remove this audio?": "¿Está seguro de eliminar esta audio?",
+    "No audios added or found!": "No se han añadido o encontrado audios!",
+    "Your browser does not support the video tag.": "Tu navegador no soporta este tipo de video.",
+    "Change Video": "Cambiar Video",
+    "Change Audio": "Cambiar Audio"
+
 
 
 }
